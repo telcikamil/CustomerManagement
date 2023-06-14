@@ -1,0 +1,18 @@
+﻿@model CompanyIndexVM
+
+
+    @foreach (var item in Model.Companies)
+    {
+        <form asp-action="Create" asp-controller="Customer" method="get">
+        <div>
+            <button class="button" type="submit" name="companyId" value="@item.Id"><span>@item.Name New Customer</span></button>
+        </div>
+        </form>
+        <form asp-action="Update" asp-controller="Company" method="get">
+        <div>
+            <button class="button" type="submit" name="companyId" value="@item.Id"><span>@item.Name Settings</span></button>
+        </div>
+        <br />
+        </form>
+    }
+

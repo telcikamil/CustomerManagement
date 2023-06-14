@@ -1,0 +1,40 @@
+﻿@model CompanyUpdateVM
+
+<form id="updateForm" asp-action="Update" asp-controller="Company" method="post">
+    <div>
+        <label>@Model.Name</label>
+    </div>
+    <div>
+        <label>Mernis Validation:</label>
+        <input id="mernisCheckbox" type="checkbox" name="IsMernisRequired" @(Model.IsMernisRequired ? "checked" : "") />
+    </div>
+    <input type="hidden" name="CompanyId" value="@Model.CompanyId">
+    <input type="hidden" name="Name" value="@Model.Name">
+    <button type="submit" value="Update">Update</button>
+</form>
+
+<script>
+    document.getElementById("mernisCheckbox").addEventListener("change", function () {
+        var form = document.getElementById("updateForm");
+        var isChecked = this.checked;
+        var existingInput = form.querySelector('input[name="IsMernisRequired"]');
+
+        if (existingInput) {
+            existingInput.value = isChecked ? "true" : "false";
+        } else {
+            var input = document.createElement("input");
+            input.type = "hidden";
+            input.name = "IsMernisRequired";
+            input.value = isChecked ? "true" : "false";
+
+            form.appendChild(input);
+        }
+    });
+</script>
+
+
+
+
+
+
+
